@@ -34,7 +34,7 @@
 
             <!-- Navigation Links -->
             <ul class="nav-links" id="nav-links">
-                <li><a href="#home"><span data-i18n="home">Home</span></a></li>
+                <li><a href="#hero"><span data-i18n="home">Home</span></a></li>
                 <li><a href="#menu"><span data-i18n="menu">Menu</span></a></li>
                 <li><a href="#gallery"><span data-i18n="gallery">Gallery</span></a></li>
                 <li><a href="https://maps.app.goo.gl/Uf37W1vmxum3vepm6" target="_blank"><i class="fas fa-map-marker-alt"></i> <span data-i18n="location">Location</span></a></li>
@@ -122,6 +122,7 @@
                 <h4 data-i18n="contactInfo">Contact Info</h4>
                 <p><i class="fas fa-map-marker-alt"></i> <a href="https://maps.app.goo.gl/Uf37W1vmxum3vepm6" target="_blank">Dehu, Maharashtra 412109</a></p>
                 <p><i class="fas fa-phone-alt"></i> <a href="tel:09623183537">096231 83537</a></p>
+                <p><i class="fas fa-phone-alt"></i> <a href="tel:9270151255">9270151255</a></p>
                 <p><i class="far fa-clock"></i> Mon - Sun | 7 AM – 10 PM</p>
             </div>
             <div class="footer-column">
@@ -131,6 +132,7 @@
         </div>
         <div class="copyright">
             <p data-i18n="rights">&copy; 2024 Indrayani Vadapav ani Misal. All Rights Reserved.</p>
+            <p>Built by Dipak patil</p>
         </div>
     </footer>
 
@@ -177,7 +179,7 @@
                 whatsappOrder: "Order on WhatsApp",
                 whatsapp_inquiry: "Hello, I would like to inquire about an order.",
                 restaurant_reply: "This is an auto-generated message. We will confirm your order shortly.",
-                outside_delivery_area: "Sorry, we only deliver within a 3km radius. Your location is too far.",
+                outside_delivery_area: "We deliver all over India.",
                 location_unavailable: "Could not get your location. Please enable location services in your browser/phone settings and try again.",
                 deliveryCharge: "Delivery Charge",
                 total: "Total"
@@ -209,7 +211,7 @@
                 whatsappOrder: "WhatsApp पर ऑर्डर करें",
                 whatsapp_inquiry: "नमस्ते, मैं एक ऑर्डर के बारे में पूछताछ करना चाहता हूं।",
                 restaurant_reply: "यह एक स्वचालित संदेश है। हम जल्द ही आपके ऑर्डर की पुष्टि करेंगे।",
-                outside_delivery_area: "माफ़ करें, हम केवल 3 किमी के दायरे में डिलीवरी करते हैं। आपका स्थान बहुत दूर है।",
+                outside_delivery_area: "हम पूरे भारत में डिलीवरी करते हैं।",
                 location_unavailable: "आपका स्थान प्राप्त नहीं हो सका। कृपया अपने ब्राउज़र/फ़ोन सेटिंग्स में स्थान सेवाएं सक्षम करें और पुनः प्रयास करें।",
                 deliveryCharge: "डिलीवरी चार्ज",
                 total: "कुल"
@@ -241,7 +243,7 @@
                 whatsappOrder: "WhatsApp वर ऑर्डर करा",
                 whatsapp_inquiry: "नमस्कार, मला ऑर्डरबद्दल चौकशी करायची आहे.",
                 restaurant_reply: "हा एक स्वयंचलित संदेश आहे. आम्ही लवकरच तुमच्या ऑर्डरची पुष्टी करू.",
-                outside_delivery_area: "क्षमस्व, आम्ही फक्त ३ किमीच्या त्रिज्येत डिलिव्हरी करतो. तुमचे स्थान खूप लांब आहे.",
+                outside_delivery_area: "आम्ही संपूर्ण भारतात डिलिव्हरी करतो.",
                 location_unavailable: "तुमचे स्थान मिळू शकले नाही. कृपया तुमच्या ब्राउझर/फोन सेटिंग्जमध्ये स्थान सेवा सक्षम करा आणि पुन्हा प्रयत्न करा.",
                 deliveryCharge: "डिलिव्हरी चार्ज",
                 total: "एकूण"
@@ -300,7 +302,7 @@
 
                         const distance = calculateDistance(userLat, userLon, restaurantLat, restaurantLon);
 
-                        if (distance <= 3) {
+                        if (true) {
                             proceedWithOrder(itemName, price, lang);
                         } else {
                             alert(translations[lang].outside_delivery_area);
