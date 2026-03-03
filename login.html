@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Indrayani Vadapav</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Khand:wght@600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="login-body">
+
+    <div class="glass-card">
+        <!-- Logo -->
+        <img src="images/maha.jpg" alt="Logo" class="login-logo">
+        
+        <!-- Title -->
+        <h1 class="login-title">इंद्रायणी वडापाव<br>आणि मिसळ</h1>
+
+        <!-- Login Form -->
+        <div class="login-form">
+            <input type="text" id="username" class="login-input" placeholder="Username">
+            <input type="password" id="password" class="login-input" placeholder="Password">
+            <button class="login-btn" onclick="performLogin()">LOGIN</button>
+        </div>
+    </div>
+
+    <script>
+        // Check if already logged in
+        if(localStorage.getItem('isAdmin') === 'true') {
+            window.location.href = 'admin.html';
+        }
+
+        function performLogin() {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+
+            if(user === "admin" && pass === "indrayani123") {
+                // Login Success
+                localStorage.setItem('isAdmin', 'true');
+                window.location.href = 'admin.html';
+            } else {
+                // Login Failed
+                alert("Wrong Username or Password!");
+            }
+        }
+    </script>
+</body>
+</html>

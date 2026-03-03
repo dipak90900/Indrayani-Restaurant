@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indrayani Vadapav ani Misal - Authentic Dehu Misal & Vadapav</title>
+    
+    <!-- SEO के लिए मेटा विवरण -->
+    <meta name="description" content="Indrayani Vadapav ani Misal में आपका स्वागत है, Dehu का सबसे अच्छा Misal और Vadapav स्पॉट।">
+
+    <!-- Favicon (Browser Tab Icon) -->
+    <link rel="icon" type="image/jpg" href="images/samosa.jpg">
+
+    <!-- Google Fonts (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Khand:wght@600;700&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- External CSS File -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <nav class="navbar">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <img src="images/maha.jpg" alt="इंद्रायणी वडापाव आणि मिसळ Logo">
+                <span>इंद्रायणी वडापाव आणि मिसळ</span>
+            </a>
+
+            <!-- Navigation Links -->
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home"><span data-i18n="home">Home</span></a></li>
+                <li><a href="#menu"><span data-i18n="menu">Menu</span></a></li>
+                <li><a href="#gallery"><span data-i18n="gallery">Gallery</span></a></li>
+                <li><a href="https://maps.app.goo.gl/Uf37W1vmxum3vepm6" target="_blank"><i class="fas fa-map-marker-alt"></i> <span data-i18n="location">Location</span></a></li>
+                <li><a href="#contact"><span data-i18n="contact">Contact</span></a></li>
+                <li>
+                    <select id="language-selector" onchange="changeLanguage(this.value)">
+                        <option value="en">English</option>
+                        <option value="mr" selected>मराठी</option>
+                        <option value="hi">हिंदी</option>
+                    </select>
+                </li>
+            </ul>
+
+            <!-- Mobile Menu Toggle Button (Hamburger Icon) -->
+            <button class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- पेज का मुख्य कंटेंट यहाँ आएगा -->
+        <section id="hero">
+            <div class="hero-content">
+                <h1 data-i18n="heroTitle">A Fresh Start to the Day</h1>
+                <p data-i18n="heroDesc">Enjoy freshly made coffee and delicious breakfast with us.</p>
+                <a href="#menu" class="cta-button" data-i18n="orderNow">Order Now</a>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="menu-section">
+            <h2 class="section-title" data-i18n="ourMenu">Our Menu</h2>
+            
+            <div class="menu-grid" id="dynamic-menu-grid">
+                <!-- Menu items will be loaded here from Admin Panel data -->
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="gallery-section">
+            <h2 class="section-title" data-i18n="ourGallery">Our Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/1.png" alt="Gallery Image 1" onclick="openLightbox(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/2.png" alt="Gallery Image 2" onclick="openLightbox(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/3.png" alt="Gallery Image 3" onclick="openLightbox(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/4.png" alt="Gallery Image 4" onclick="openLightbox(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/5.png" alt="Gallery Image 5" onclick="openLightbox(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/6.png" alt="Gallery Image 6" onclick="openLightbox(this.src)">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Lightbox Structure -->
+    <div id="lightbox" class="lightbox-container" onclick="closeLightbox()">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <footer id="contact" class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3 data-i18n="brandName">Indrayani Vadapav ani Misal</h3>
+                <p class="visit-us" data-i18n="visitUs">Visit Us for Authentic Dehu Misal</p>
+            </div>
+            <div class="footer-column">
+                <h4 data-i18n="contactInfo">Contact Info</h4>
+                <p><i class="fas fa-map-marker-alt"></i> <a href="https://maps.app.goo.gl/Uf37W1vmxum3vepm6" target="_blank">Dehu, Maharashtra 412109</a></p>
+                <p><i class="fas fa-phone-alt"></i> <a href="tel:09623183537">096231 83537</a></p>
+                <p><i class="far fa-clock"></i> Mon - Sun | 7 AM – 10 PM</p>
+            </div>
+            <div class="footer-column">
+                <h4 data-i18n="followUs">Follow Us</h4>
+                <a href="https://www.instagram.com/indrayani_wadapav_ani_misal/" target="_blank" class="social-link"><i class="fab fa-instagram"></i> Instagram</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p data-i18n="rights">&copy; 2024 Indrayani Vadapav ani Misal. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="javascript:void(0)" id="whatsapp-float-btn" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i> <span data-i18n="whatsappOrder">Order on WhatsApp</span>
+    </a>
+
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Language Translation Script
+        const translations = {
+            en: {
+                home: "Home",
+                menu: "Menu",
+                gallery: "Gallery",
+                location: "Location",
+                contact: "Contact",
+                heroTitle: "A Fresh Start to the Day",
+                heroDesc: "Enjoy freshly made coffee and delicious breakfast with us.",
+                orderNow: "Order Now",
+                todaysSpecial: "Today's Special",
+                spicyMisal: "Spicy Misal Pav",
+                misalDesc: "Kolhapuri style spicy curry with farsan and pav.",
+                mumbaiVada: "Mumbai Vada Pav",
+                vadaDesc: "The classic Mumbai burger with spicy chutney.",
+                ourMenu: "Our Menu",
+                ourGallery: "Our Gallery",
+                brandName: "Indrayani Vadapav ani Misal",
+                visitUs: "Visit Us for Authentic Dehu Misal",
+                contactInfo: "Contact Info",
+                followUs: "Follow Us",
+                rights: "© 2024 Indrayani Vadapav ani Misal. All Rights Reserved.",
+                order_prompt: "Enter quantity for {itemName}:",
+                invalid_quantity: "Invalid quantity. Please enter a number greater than 0.",
+                i_want_to_order: "Hello, I would like to order:",
+                whatsappOrder: "Order on WhatsApp",
+                whatsapp_inquiry: "Hello, I would like to inquire about an order.",
+                restaurant_reply: "This is an auto-generated message. We will confirm your order shortly.",
+                outside_delivery_area: "Sorry, we only deliver within a 3km radius. Your location is too far.",
+                location_unavailable: "Could not get your location. Please enable location services in your browser/phone settings and try again.",
+                deliveryCharge: "Delivery Charge",
+                total: "Total"
+            },
+            hi: {
+                home: "होम",
+                menu: "मेनू",
+                gallery: "गैलरी",
+                location: "लोकेशन",
+                contact: "संपर्क",
+                heroTitle: "दिन की एक ताज़ा शुरुआत",
+                heroDesc: "हमारे साथ ताज़ी बनी कॉफ़ी और स्वादिष्ट नाश्ते का आनंद लें।",
+                orderNow: "अभी ऑर्डर करें",
+                todaysSpecial: "आज की खास पेशकश",
+                spicyMisal: "स्पाइसी मिसल पाव",
+                misalDesc: "कोल्हापुरी स्टाइल तीखी तरी, फरसाण और पाव के साथ।",
+                mumbaiVada: "मुंबई वडा पाव",
+                vadaDesc: "तीखी चटनी के साथ क्लासिक मुंबई बर्गर।",
+                ourMenu: "हमारा मेनू",
+                ourGallery: "हमारी गैलरी",
+                brandName: "इंद्रायणी वडापाव आणि मिसळ",
+                visitUs: "असली देहू मिसल का स्वाद लें",
+                contactInfo: "संपर्क जानकारी",
+                followUs: "हमें फॉलो करें",
+                rights: "© 2024 इंद्रायणी वडापाव आणि मिसळ. सर्वाधिकार सुरक्षित।",
+                order_prompt: "{itemName} के लिए मात्रा दर्ज करें:",
+                invalid_quantity: "अमान्य मात्रा। कृपया 0 से बड़ी संख्या दर्ज करें।",
+                i_want_to_order: "नमस्ते, मैं यह ऑर्डर करना चाहता हूँ:",
+                whatsappOrder: "WhatsApp पर ऑर्डर करें",
+                whatsapp_inquiry: "नमस्ते, मैं एक ऑर्डर के बारे में पूछताछ करना चाहता हूं।",
+                restaurant_reply: "यह एक स्वचालित संदेश है। हम जल्द ही आपके ऑर्डर की पुष्टि करेंगे।",
+                outside_delivery_area: "माफ़ करें, हम केवल 3 किमी के दायरे में डिलीवरी करते हैं। आपका स्थान बहुत दूर है।",
+                location_unavailable: "आपका स्थान प्राप्त नहीं हो सका। कृपया अपने ब्राउज़र/फ़ोन सेटिंग्स में स्थान सेवाएं सक्षम करें और पुनः प्रयास करें।",
+                deliveryCharge: "डिलीवरी चार्ज",
+                total: "कुल"
+            },
+            mr: {
+                home: "मुख्यपृष्ठ",
+                menu: "मेनू",
+                gallery: "गॅलरी",
+                location: "ठिकाण",
+                contact: "संपर्क",
+                heroTitle: "दिवसाची एक ताजी सुरुवात",
+                heroDesc: "आमच्यासोबत ताज्या कॉफी आणि स्वादिष्ट नाश्त्याचा आनंद घ्या.",
+                orderNow: "आता ऑर्डर करा",
+                todaysSpecial: "आजचे विशेष",
+                spicyMisal: "झणझणीत मिसळ पाव",
+                misalDesc: "कोल्हापुरी स्टाईल रस्सा, फरसाण आणि पाव सोबत.",
+                mumbaiVada: "मुंबई वडापाव",
+                vadaDesc: "तिखट चटणीसोबत क्लासिक मुंबई वडापाव.",
+                ourMenu: "आमचा मेनू",
+                ourGallery: "आमची गॅलरी",
+                brandName: "इंद्रायणी वडापाव आणि मिसळ",
+                visitUs: "अस्सल देहू मिसळसाठी नक्की भेट द्या",
+                contactInfo: "संपर्क माहिती",
+                followUs: "आम्हाला फॉलो करा",
+                rights: "© 2024 इंद्रायणी वडापाव आणि मिसळ. सर्व हक्क राखीव.",
+                order_prompt: "{itemName} साठी संख्या प्रविष्ट करा:",
+                invalid_quantity: "अवैध प्रमाण. कृपया ० पेक्षा मोठी संख्या प्रविष्ट करा.",
+                i_want_to_order: "नमस्कार, मला ही ऑर्डर करायची आहे:",
+                whatsappOrder: "WhatsApp वर ऑर्डर करा",
+                whatsapp_inquiry: "नमस्कार, मला ऑर्डरबद्दल चौकशी करायची आहे.",
+                restaurant_reply: "हा एक स्वयंचलित संदेश आहे. आम्ही लवकरच तुमच्या ऑर्डरची पुष्टी करू.",
+                outside_delivery_area: "क्षमस्व, आम्ही फक्त ३ किमीच्या त्रिज्येत डिलिव्हरी करतो. तुमचे स्थान खूप लांब आहे.",
+                location_unavailable: "तुमचे स्थान मिळू शकले नाही. कृपया तुमच्या ब्राउझर/फोन सेटिंग्जमध्ये स्थान सेवा सक्षम करा आणि पुन्हा प्रयत्न करा.",
+                deliveryCharge: "डिलिव्हरी चार्ज",
+                total: "एकूण"
+            }
+        };
+
+        // Initialize default language on page load
+        changeLanguage('mr');
+
+        function changeLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        // --- Dynamic Menu Logic (Loaded from Admin Panel) ---
+        const defaultMenu = [
+            { name: "Batata Bhaji", price: 40, image: "images/batata-bhaji.jpg", desc: "Crispy potato fritters, perfect with tea.", veg: true },
+            { name: "Bhaji", price: 40, image: "images/bhaji.jpg", desc: "Assorted vegetable fritters.", veg: true },
+            { name: "Misal Pav", price: 90, image: "images/misal-pav.jpg", desc: "Kolhapuri style spicy curry with farsan.", veg: true },
+            { name: "Poha", price: 30, image: "images/poha.jpg", desc: "Light and fluffy flattened rice.", veg: true },
+            { name: "Samosa", price: 20, image: "images/samosa.jpg", desc: "Spiced potato pastry.", veg: true },
+            { name: "Vada Pav", price: 25, image: "images/vada-pav.jpg", desc: "The classic Mumbai burger.", veg: true }
+        ];
+
+        const menuData = JSON.parse(localStorage.getItem('menuData')) || defaultMenu;
+        const menuContainer = document.getElementById('dynamic-menu-grid');
+
+        menuData.forEach(item => {
+            const vegIcon = item.veg ? '<span class="veg-icon" style="color:green">●</span>' : '<span class="veg-icon" style="color:red">●</span>';
+            const cardHtml = `
+                <div class="menu-card">
+                    <img src="${item.image}" alt="${item.name}" onerror="this.src='https://placehold.co/600x400?text=No+Image'">
+                    <h4>${vegIcon} <span>${item.name}</span></h4>
+                    <span class="price">₹${item.price}</span>
+                    <p class="description">${item.desc}</p>
+                    <button class="cta-button" style="width:100%; text-align:center; margin-top:10px;" onclick="orderItem('${item.name}', ${item.price})">${translations['mr'].orderNow}</button>
+                </div>
+            `;
+            menuContainer.innerHTML += cardHtml;
+        });
+
+        function orderItem(itemName, price) {
+            const lang = document.getElementById('language-selector').value || 'en';
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => { // Success
+                        const userLat = position.coords.latitude;
+                        const userLon = position.coords.longitude;
+                        const restaurantLat = 18.7191; // Dehu, Maharashtra
+                        const restaurantLon = 73.7645;
+
+                        const distance = calculateDistance(userLat, userLon, restaurantLat, restaurantLon);
+
+                        if (distance <= 3) {
+                            proceedWithOrder(itemName, price, lang);
+                        } else {
+                            alert(translations[lang].outside_delivery_area);
+                        }
+                    },
+                    () => { // Error
+                        alert(translations[lang].location_unavailable);
+                    }
+                );
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function proceedWithOrder(itemName, price, lang) {
+            const promptText = translations[lang].order_prompt.replace('{itemName}', itemName); // itemName is now direct string
+            const quantity = prompt(promptText, "1");
+
+            if (quantity && !isNaN(quantity) && quantity > 0) {
+                const qty = parseInt(quantity);
+                const deliveryCharge = 30; // ₹30 डिलीवरी चार्ज
+                const itemTotal = qty * price;
+                const grandTotal = itemTotal + deliveryCharge;
+                const orderMessage = `${translations[lang].i_want_to_order}\n- ${qty} x ${itemName} (₹${itemTotal})\n- ${translations[lang].deliveryCharge}: ₹${deliveryCharge}\n- ${translations[lang].total}: ₹${grandTotal}`;
+                const restaurantReply = translations[lang].restaurant_reply;
+                const finalMessage = `${orderMessage}\n\n${restaurantReply}`;
+                const whatsappNumber = "919623183537";
+                const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(finalMessage)}`;
+                window.open(url, '_blank');
+            } else if (quantity !== null) {
+                alert(translations[lang].invalid_quantity);
+            }
+        }
+
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371; // Radius of the earth in km
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = 0.5 - Math.cos(dLat)/2 + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * (1 - Math.cos(dLon)) / 2;
+            return R * 2 * Math.asin(Math.sqrt(a));
+        }
+
+        // Floating WhatsApp button for general inquiry
+        document.getElementById('whatsapp-float-btn').addEventListener('click', function() {
+            const lang = document.getElementById('language-selector').value || 'en';
+            const message = translations[lang].whatsapp_inquiry;
+            const whatsappNumber = "919623183537";
+            const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        });
+
+        // Lightbox Functions
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        function openLightbox(src) {
+            lightbox.style.display = 'flex';
+            lightboxImg.src = src;
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+            lightboxImg.src = '';
+        }
+
+    </script>
+
+</body>
+</html>

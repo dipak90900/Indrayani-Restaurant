@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Indrayani Vadapav</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Khand:wght@600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="admin-body">
+
+    <div class="admin-wrapper">
+        <!-- Sidebar -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-brand">Indrayani Admin</div>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-utensils"></i> Menu</a></li>
+                <li><a href="index.html" target="_blank"><i class="fas fa-external-link-alt"></i> View Website</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <div style="display: flex; align-items: center;">
+                    <button id="sidebar-toggle" class="mobile-toggle"><i class="fas fa-bars"></i></button>
+                    <h2 class="header-title">इंद्रायणी वडापाव आणि मिसळ - Admin</h2>
+                </div>
+                <button class="cta-button" onclick="logout()" style="width: auto; padding: 8px 20px; font-size: 0.9rem; margin-top:0; background-color: #333;">Logout <i class="fas fa-sign-out-alt"></i></button>
+            </header>
+
+            <div class="dashboard-container">
+                
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-box"></i></div>
+                        <div class="stat-info">
+                            <h3 id="total-items-count">0</h3>
+                            <p>Total Items</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-shopping-cart"></i></div>
+                        <div class="stat-info">
+                            <h3>0</h3>
+                            <p>Today's Orders</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-store"></i></div>
+                        <div class="stat-info">
+                            <h3>Open</h3>
+                            <p style="color: green; font-weight: bold; font-size: 0.9rem;">Shop Status</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Management Table -->
+                <div class="admin-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h3>Menu Management</h3>
+                        <button class="cta-button" onclick="openModal()" style="width: auto; margin-top: 0; padding: 10px 20px; font-size: 0.9rem;">+ Add Item</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Dish Name</th>
+                                    <th>Price</th>
+                                    <th>Type</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="menu-table-body">
+                                <!-- Dynamic Rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Add/Edit Item Modal -->
+    <div id="itemModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:2000; justify-content:center; align-items:center;">
+        <div class="admin-card" style="width:90%; max-width:500px; position:relative; padding: 30px;">
+            <span onclick="closeModal()" style="position:absolute; top:15px; right:20px; cursor:pointer; font-size:1.5rem;">&times;</span>
+            <h3 style="margin-bottom:20px;" id="modal-title">Add New Dish</h3>
+            
+            <input type="hidden" id="edit-index" value="-1">
+            
+            <div class="admin-item">
+                <label>Dish Name</label>
+                <input type="text" id="item-name" placeholder="e.g. Misal Pav" class="admin-input">
+            </div>
+            <div class="admin-item">
+                <label>Price (₹)</label>
+                <input type="number" id="item-price" placeholder="e.g. 90" class="admin-input">
+            </div>
+            <div class="admin-item">
+                <label>Image Path</label>
+                <input type="text" id="item-image" placeholder="e.g. images/misal-pav.jpg" class="admin-input">
+            </div>
+            <div class="admin-item">
+                <label>Description</label>
+                <input type="text" id="item-desc" placeholder="Short description" class="admin-input">
+            </div>
+            <div class="admin-item">
+                <label><input type="checkbox" id="item-veg" checked> Is Vegetarian?</label>
+            </div>
+
+            <button class="cta-button" onclick="saveItem()">Save Item</button>
+        </div>
+    </div>
+
+    <script>
+        // --- Security Check ---
+        if(localStorage.getItem('isAdmin') !== 'true') {
+            window.location.href = 'login.html';
+        }
+
+        // Default Menu Data
+        const defaultMenu = [
+            { name: "Batata Bhaji", price: 40, image: "images/batata-bhaji.jpg", desc: "Crispy potato fritters, perfect with tea.", veg: true },
+            { name: "Bhaji", price: 40, image: "images/bhaji.jpg", desc: "Assorted vegetable fritters.", veg: true },
+            { name: "Misal Pav", price: 90, image: "images/misal-pav.jpg", desc: "Kolhapuri style spicy curry with farsan.", veg: true },
+            { name: "Poha", price: 30, image: "images/poha.jpg", desc: "Light and fluffy flattened rice.", veg: true },
+            { name: "Samosa", price: 20, image: "images/samosa.jpg", desc: "Spiced potato pastry.", veg: true },
+            { name: "Vada Pav", price: 25, image: "images/vada-pav.jpg", desc: "The classic Mumbai burger.", veg: true }
+        ];
+
+        let menuData = JSON.parse(localStorage.getItem('menuData')) || defaultMenu;
+
+        // Initialize
+        renderTable();
+
+        function renderTable() {
+            const tbody = document.getElementById('menu-table-body');
+            tbody.innerHTML = '';
+            
+            menuData.forEach((item, index) => {
+                const vegBadge = item.veg ? '<span style="color:green; font-weight:bold;">Veg</span>' : '<span style="color:red; font-weight:bold;">Non-Veg</span>';
+                const row = `
+                    <tr>
+                        <td><img src="${item.image}" alt="${item.name}" style="width:50px; height:50px; object-fit:cover; border-radius:5px;" onerror="this.src='https://placehold.co/50x50'"></td>
+                        <td><strong>${item.name}</strong><br><small style="color:#777">${item.desc}</small></td>
+                        <td>₹${item.price}</td>
+                        <td>${vegBadge}</td>
+                        <td>
+                            <button onclick="editItem(${index})" style="background:#ffbb33; color:white; border:none; padding:8px 12px; border-radius:5px; cursor:pointer; margin-right:5px;"><i class="fas fa-edit"></i></button>
+                            <button onclick="deleteItem(${index})" style="background:#ff4444; color:white; border:none; padding:8px 12px; border-radius:5px; cursor:pointer;"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+
+            // Update Stats
+            document.getElementById('total-items-count').innerText = menuData.length;
+        }
+
+        // --- Add / Edit Logic ---
+        function saveItem() {
+            const name = document.getElementById('item-name').value;
+            const price = document.getElementById('item-price').value;
+            const image = document.getElementById('item-image').value;
+            const desc = document.getElementById('item-desc').value;
+            const veg = document.getElementById('item-veg').checked;
+            const index = document.getElementById('edit-index').value;
+
+            if(!name || !price) { alert("Name and Price are required!"); return; }
+
+            const newItem = { name, price: parseInt(price), image, desc, veg };
+
+            if(index == -1) {
+                // Add New
+                menuData.push(newItem);
+            } else {
+                // Update Existing
+                menuData[index] = newItem;
+            }
+
+            localStorage.setItem('menuData', JSON.stringify(menuData));
+            renderTable();
+            closeModal();
+        }
+
+        function editItem(index) {
+            const item = menuData[index];
+            document.getElementById('modal-title').innerText = "Edit Dish";
+            document.getElementById('item-name').value = item.name;
+            document.getElementById('item-price').value = item.price;
+            document.getElementById('item-image').value = item.image;
+            document.getElementById('item-desc').value = item.desc;
+            document.getElementById('item-veg').checked = item.veg;
+            document.getElementById('edit-index').value = index;
+            
+            document.getElementById('itemModal').style.display = 'flex';
+        }
+
+        function deleteItem(index) {
+            if(confirm('Are you sure you want to delete this item?')) {
+                menuData.splice(index, 1);
+                localStorage.setItem('menuData', JSON.stringify(menuData));
+                renderTable();
+            }
+        }
+
+        // --- Modal Functions ---
+        function openModal() {
+            document.getElementById('modal-title').innerText = "Add New Dish";
+            document.getElementById('item-name').value = '';
+            document.getElementById('item-price').value = '';
+            document.getElementById('item-image').value = '';
+            document.getElementById('item-desc').value = '';
+            document.getElementById('item-veg').checked = true;
+            document.getElementById('edit-index').value = -1;
+            
+            document.getElementById('itemModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('itemModal').style.display = 'none';
+        }
+
+        // --- Logout ---
+        function logout() {
+            localStorage.removeItem('isAdmin');
+            window.location.href = 'login.html';
+        }
+
+        // --- Mobile Sidebar Toggle ---
+        const sidebar = document.getElementById('sidebar');
+        const toggleBtn = document.getElementById('sidebar-toggle');
+        
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if(window.innerWidth <= 768 && !sidebar.contains(e.target) && e.target !== toggleBtn && !toggleBtn.contains(e.target)) {
+                sidebar.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

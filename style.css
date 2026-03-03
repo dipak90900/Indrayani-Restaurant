@@ -1,0 +1,994 @@
+/* --- CSS Variables (Root) --- */
+:root {
+    --primary-font: 'Poppins', sans-serif;
+    --primary-color: #E57373; /* एक वार्म, आकर्षक लाल रंग */
+    --secondary-color: #424242; /* गहरा ग्रे */
+    --background-color: #FFF8F0; /* हल्का क्रीम */
+    --text-color: #333;
+    --header-height: 70px;
+}
+
+/* --- Basic Reset & Body Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+body {
+    font-family: var(--primary-font);
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* इमेज लोड न होने पर लेआउट न बिगड़े */
+img {
+    background-color: #eee; /* हल्का ग्रे रंग */
+    object-fit: cover;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- Header & Navigation Bar --- */
+.header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    height: var(--header-height);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Khand', sans-serif; /* मराठी के लिए बोल्ड फॉन्ट */
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #b22222; /* गहरा लाल रंग */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    height: 55px; /* हेडर में फिट होने के लिए साइज */
+    width: auto;
+    vertical-align: middle; /* इमेज को सही से अलाइन करने के लिए */
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a i {
+    margin-right: 6px; /* आइकन और टेक्स्ट के बीच थोड़ी जगह */
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Language Selector */
+#language-selector {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    font-family: var(--primary-font);
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+}
+
+#language-selector:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.nav-toggle {
+    display: none; /* डेस्कटॉप पर छिपा हुआ */
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--secondary-color);
+}
+
+/* --- Announcement Bar --- */
+.announcement-bar {
+    background-color: #FF4500; /* Orange Background */
+    color: white;
+    padding: 8px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-top: var(--header-height); /* Fixed Header के नीचे जगह बनाने के लिए */
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.marquee-text {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* --- Hero Section Example --- */
+#hero {
+    display: flex;
+    justify-content: center; /* टेक्स्ट को बीच में लाने के लिए */
+    align-items: center;
+    text-align: center; /* टेक्स्ट को बीच में लाने के लिए */
+    min-height: 100vh;
+    padding-top: 2rem; /* पैडिंग कम की क्योंकि अब ऊपर Announcement Bar है */
+    padding-left: 5%;
+    padding-right: 5%;
+    color: #FFFFFF; /* White Text for dark background */
+    gap: 2rem;
+    position: relative; /* Overlay के लिए ज़रूरी */
+    background-image: url('images/indra.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* हीरो सेक्शन पर ओवरले ताकि टेक्स्ट साफ़ दिखे */
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* गहरा ओवरले ताकि इमेज साफ़ दिखे */
+    z-index: 0;
+}
+
+#hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* टेक्स्ट के पीछे छाया */
+}
+
+#hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #f1f1f1; /* थोड़ा हल्का सफ़ेद */
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7); /* टेक्स्ट के पीछे छाया */
+}
+
+.hero-content {
+    position: relative; /* ओवरले के ऊपर रखने के लिए */
+    z-index: 1;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #FF4500; /* Orange Button */
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+    /* Resets for <button> elements */
+    border: none;
+    cursor: pointer;
+    font-family: var(--primary-font);
+}
+
+.cta-button:hover {
+    background-color: #e63900;
+}
+
+/* --- Footer --- */
+.footer {
+    background-color: #1a1a1a; /* Premium Dark Background */
+    color: #f1f1f1;
+    padding: 3rem 2rem 1rem;
+    margin-top: 2rem;
+    font-size: 0.95rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-column h3, .footer-column h4 {
+    color: #FF4500; /* Orange accent matching the theme */
+    margin-bottom: 1rem;
+}
+
+.visit-us {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #ddd;
+}
+
+.footer-column p {
+    margin-bottom: 0.8rem;
+}
+
+.footer-column a {
+    transition: color 0.3s;
+}
+
+.footer-column a:hover {
+    color: #FF4500;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #333;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+/* --- Menu Section Styles --- */
+.menu-section {
+    padding: 4rem 2rem;
+    background-color: #fff;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+    font-family: var(--primary-font);
+}
+
+.menu-category {
+    max-width: 1200px;
+    margin: 0 auto 3rem auto;
+}
+
+.menu-category h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--primary-color);
+    display: inline-block;
+    color: var(--secondary-color);
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.menu-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center; /* Center align text in the card */
+}
+
+/* Hover Effect: Shadow and slight lift */
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* मेनू कार्ड की इमेज का साइज फिक्स करें */
+.menu-card img {
+    width: 100%;
+    height: 200px; /* फिक्स हाइट ताकि सब बराबर दिखें */
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 1rem; /* Space between image and text */
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left; /* Keep header text left-aligned */
+}
+
+.menu-card h4 {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem; /* Space between title and price/description */
+}
+
+.card-header h4 {
+    margin-bottom: 0;
+}
+
+.veg-icon {
+    color: #4CAF50; /* Green color for veg icon */
+    font-size: 0.8em;
+    vertical-align: middle;
+}
+
+.price {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.description {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* --- Gallery Section --- */
+.gallery-section {
+    padding: 4rem 2rem;
+    background-color: #fff; /* Matches menu background */
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    overflow: hidden; /* Zoom effect ke liye zaroori */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: relative;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px; /* Sabhi images ke liye ek fix height */
+    object-fit: cover; /* Image ko crop karke fit karega */
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+/* Hover par zoom effect */
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* --- Lightbox Styles --- */
+.lightbox-container {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+/* --- Responsive Design (Media Query for Mobile) --- */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 1.2rem; /* मोबाइल पर नाम थोड़ा छोटा */
+    }
+
+    .logo img {
+        height: 40px; /* मोबाइल पर लोगो थोड़ा छोटा */
+    }
+
+    /* नेविगेशन बार (Hamburger Menu) */
+    .nav-links {
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        transform: translateY(-150%); /* डिफ़ॉल्ट रूप से ऊपर छिपा हुआ */
+        transition: transform 0.3s ease-in-out;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        transform: translateY(0); /* क्लिक करने पर नीचे आएगा */
+    }
+
+    .nav-links li {
+        padding: 1rem 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-toggle {
+        display: block; /* हैमबर्गर आइकन दिखाएं */
+    }
+    
+    /* Hero Section Mobile Adjustment */
+    #hero {
+        flex-direction: column-reverse; /* Image on top, text below (or vice versa) */
+        text-align: center;
+        padding: 100px 20px 50px 20px;
+        height: auto;
+    }
+
+    /* मेनू कार्ड्स (एक के नीचे एक) */
+    .menu-grid {
+        grid-template-columns: 1fr; /* सिंगल कॉलम लेआउट */
+    }
+
+    .menu-section {
+        padding: 2rem 1rem; /* मोबाइल पर पैडिंग कम करें */
+    }
+    
+    .navbar {
+        padding: 0 1rem;
+    }
+}
+
+/* --- Admin Panel Styles --- */
+.admin-body {
+    background-color: #f4f4f4;
+    min-height: 100vh;
+}
+
+.admin-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #333; /* Dark Grey */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100%;
+    transition: 0.3s;
+    z-index: 1000;
+}
+
+.sidebar-brand {
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding: 20px;
+    background-color: #222;
+    color: #FF4500;
+    text-align: center;
+    font-family: 'Khand', sans-serif;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-menu li a {
+    display: block;
+    padding: 15px 20px;
+    color: #ccc;
+    text-decoration: none;
+    border-bottom: 1px solid #444;
+    transition: 0.3s;
+}
+
+.sidebar-menu li a:hover, .sidebar-menu li a.active {
+    background-color: #FF4500;
+    color: white;
+}
+
+.sidebar-menu i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    margin-left: 250px;
+    transition: 0.3s;
+}
+
+.top-header {
+    background-color: #fff;
+    padding: 15px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 900;
+}
+
+.header-title {
+    font-family: 'Khand', sans-serif;
+    font-size: 1.5rem;
+    color: #333;
+    margin: 0;
+}
+
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-right: 15px;
+    color: #333;
+}
+
+.dashboard-container {
+    padding: 20px;
+}
+
+/* Stats Cards */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    border-left: 4px solid #FF4500;
+}
+
+.stat-icon {
+    font-size: 2rem;
+    color: #FF4500;
+    margin-right: 15px;
+}
+
+.stat-info h3 {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.stat-info p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Admin Card & Table */
+.admin-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.admin-table th, .admin-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.admin-table th {
+    background-color: #f8f9fa;
+    color: #555;
+    font-weight: 600;
+}
+
+.price-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.save-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+}
+
+/* Login Card */
+.login-card {
+    max-width: 400px;
+    margin: 100px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.admin-input {
+    width: 100%;
+    padding: 12px;
+    margin: 15px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-250px);
+    }
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    .main-content {
+        margin-left: 0;
+    }
+    .mobile-toggle {
+        display: block;
+    }
+}
+
+/* --- Full-Featured Admin Dashboard Styles --- */
+.admin-body {
+    background-color: #f4f6f9;
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    margin: 0; /* Reset body margin for admin page */
+}
+
+.sidebar {
+    width: 260px;
+    background-color: #1a1a1a; /* Dark Sidebar */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+    position: fixed;
+    height: 100%;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+}
+
+.sidebar-header {
+    padding: 25px 20px;
+    background-color: #b22222; /* Dark Red Brand Color */
+    text-align: center;
+    font-family: 'Khand', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.sidebar-menu li a {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    color: #ccc;
+    text-decoration: none;
+    transition: 0.3s;
+    border-left: 4px solid transparent;
+    font-size: 1rem;
+}
+
+.sidebar-menu li a:hover, .sidebar-menu li a.active {
+    background-color: #333;
+    color: #fff;
+    border-left-color: #FF4500; /* Orange Accent */
+}
+
+.sidebar-menu li a i {
+    margin-right: 15px;
+    width: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.main-content {
+    flex: 1;
+    margin-left: 260px; /* Width of sidebar */
+    display: flex;
+    flex-direction: column;
+    transition: margin-left 0.3s ease;
+    width: 100%;
+}
+
+.top-header {
+    background-color: #fff;
+    padding: 15px 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.header-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    font-family: 'Khand', sans-serif;
+}
+
+.dashboard-container {
+    padding: 30px;
+}
+
+/* Stats Cards */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid #FF4500;
+}
+
+.stat-info h3 {
+    font-size: 2rem;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: 700;
+}
+
+.stat-info p {
+    color: #777;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    color: #FF4500;
+    opacity: 0.2;
+}
+
+/* Menu Table */
+.table-container {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.table-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.menu-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.menu-table th, .menu-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.menu-table th {
+    background-color: #f8f9fa;
+    color: #555;
+    font-weight: 600;
+}
+
+/* Mobile Responsive for Admin */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    .main-content {
+        margin-left: 0;
+    }
+}
+}
+
+/* --- WhatsApp Floating Button --- */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    background-color: #20bd5a;
+}
+
+.whatsapp-float i {
+    font-size: 1.5rem;
+}
+
+/* --- Premium Login Page Styles --- */
+.login-body {
+    background-image: url('images/indra.png'); /* Restaurant Background */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 0;
+}
+
+.login-body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Dark Overlay */
+    backdrop-filter: blur(8px); /* Blur Effect */
+    z-index: 1;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.15); /* Translucent White */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 40px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.login-logo {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.login-title {
+    color: white;
+    font-family: 'Khand', sans-serif;
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    line-height: 1.2;
+}
+
+.login-input {
+    width: 100%;
+    padding: 14px 20px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
+
+.login-input:focus {
+    background: white;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    transform: scale(1.02);
+}
+
+.login-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 50px;
+    background: #FF4500; /* Orange Brand Color */
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+    box-shadow: 0 4px 15px rgba(255, 69, 0, 0.4);
+}
+
+.login-btn:hover {
+    background: #ff5722;
+    transform: translateY(-2px);
+}
