@@ -135,6 +135,19 @@
         <i class="fab fa-whatsapp"></i> <span data-i18n="whatsappOrder">Order on WhatsApp</span>
     </a>
 
+    <!-- Order Modal -->
+    <div id="order-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 id="modal-title" class="modal-title"></h3>
+            <input id="modal-input" class="modal-input" type="number" value="1" min="1">
+            <div class="modal-buttons">
+                <button id="modal-cancel" class="modal-btn cancel">Cancel</button>
+                <button id="modal-confirm" class="modal-btn confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+
     <!-- JavaScript for Mobile Menu -->
     <script>
         const navToggle = document.getElementById('nav-toggle');
@@ -155,11 +168,6 @@
                 heroTitle: "A Fresh Start to the Day",
                 heroDesc: "Enjoy freshly made coffee and delicious breakfast with us.",
                 orderNow: "Order Now",
-                todaysSpecial: "Today's Special",
-                spicyMisal: "Spicy Misal Pav",
-                misalDesc: "Kolhapuri style spicy curry with farsan and pav.",
-                mumbaiVada: "Mumbai Vada Pav",
-                vadaDesc: "The classic Mumbai burger with spicy chutney.",
                 ourMenu: "Our Menu",
                 ourGallery: "Our Gallery",
                 brandName: "Indrayani Vadapav ani Misal",
@@ -173,10 +181,12 @@
                 whatsappOrder: "Order on WhatsApp",
                 whatsapp_inquiry: "Hello, I would like to inquire about an order.",
                 restaurant_reply: "This is an auto-generated message. We will confirm your order shortly.",
-                outside_delivery_area: "We deliver all over India.",
-                location_unavailable: "Could not get your location. Please enable location services in your browser/phone settings and try again.",
                 deliveryCharge: "Delivery Charge",
-                total: "Total"
+                total: "Total",
+                location_prompt: "Please enter your full delivery address:",
+                address_prompt_title: "Enter Your Address",
+                confirm_button: "Confirm",
+                cancel_button: "Cancel"
             },
             hi: {
                 home: "होम",
@@ -187,11 +197,6 @@
                 heroTitle: "दिन की एक ताज़ा शुरुआत",
                 heroDesc: "हमारे साथ ताज़ी बनी कॉफ़ी और स्वादिष्ट नाश्ते का आनंद लें।",
                 orderNow: "अभी ऑर्डर करें",
-                todaysSpecial: "आज की खास पेशकश",
-                spicyMisal: "स्पाइसी मिसल पाव",
-                misalDesc: "कोल्हापुरी स्टाइल तीखी तरी, फरसाण और पाव के साथ।",
-                mumbaiVada: "मुंबई वडा पाव",
-                vadaDesc: "तीखी चटनी के साथ क्लासिक मुंबई बर्गर।",
                 ourMenu: "हमारा मेनू",
                 ourGallery: "हमारी गैलरी",
                 brandName: "इंद्रायणी वडापाव आणि मिसळ",
@@ -205,10 +210,12 @@
                 whatsappOrder: "WhatsApp पर ऑर्डर करें",
                 whatsapp_inquiry: "नमस्ते, मैं एक ऑर्डर के बारे में पूछताछ करना चाहता हूं।",
                 restaurant_reply: "यह एक स्वचालित संदेश है। हम जल्द ही आपके ऑर्डर की पुष्टि करेंगे।",
-                outside_delivery_area: "हम पूरे भारत में डिलीवरी करते हैं।",
-                location_unavailable: "आपका स्थान प्राप्त नहीं हो सका। कृपया अपने ब्राउज़र/फ़ोन सेटिंग्स में स्थान सेवाएं सक्षम करें और पुनः प्रयास करें।",
                 deliveryCharge: "डिलीवरी चार्ज",
-                total: "कुल"
+                total: "कुल",
+                location_prompt: "कृपया अपना पूरा डिलीवरी पता दर्ज करें:",
+                address_prompt_title: "अपना पता दर्ज करें",
+                confirm_button: "पुष्टि करें",
+                cancel_button: "रद्द करें"
             },
             mr: {
                 home: "मुख्यपृष्ठ",
@@ -219,11 +226,6 @@
                 heroTitle: "दिवसाची एक ताजी सुरुवात",
                 heroDesc: "आमच्यासोबत ताज्या कॉफी आणि स्वादिष्ट नाश्त्याचा आनंद घ्या.",
                 orderNow: "आता ऑर्डर करा",
-                todaysSpecial: "आजचे विशेष",
-                spicyMisal: "झणझणीत मिसळ पाव",
-                misalDesc: "कोल्हापुरी स्टाईल रस्सा, फरसाण आणि पाव सोबत.",
-                mumbaiVada: "मुंबई वडापाव",
-                vadaDesc: "तिखट चटणीसोबत क्लासिक मुंबई वडापाव.",
                 ourMenu: "आमचा मेनू",
                 ourGallery: "आमची गॅलरी",
                 brandName: "इंद्रायणी वडापाव आणि मिसळ",
@@ -237,10 +239,12 @@
                 whatsappOrder: "WhatsApp वर ऑर्डर करा",
                 whatsapp_inquiry: "नमस्कार, मला ऑर्डरबद्दल चौकशी करायची आहे.",
                 restaurant_reply: "हा एक स्वयंचलित संदेश आहे. आम्ही लवकरच तुमच्या ऑर्डरची पुष्टी करू.",
-                outside_delivery_area: "आम्ही संपूर्ण भारतात डिलिव्हरी करतो.",
-                location_unavailable: "तुमचे स्थान मिळू शकले नाही. कृपया तुमच्या ब्राउझर/फोन सेटिंग्जमध्ये स्थान सेवा सक्षम करा आणि पुन्हा प्रयत्न करा.",
                 deliveryCharge: "डिलिव्हरी चार्ज",
-                total: "एकूण"
+                total: "एकूण",
+                location_prompt: "कृपया तुमचा संपूर्ण डिलिव्हरी पत्ता टाका:",
+                address_prompt_title: "तुमचा पत्ता प्रविष्ट करा",
+                confirm_button: "निश्चित करा",
+                cancel_button: "रद्द करा"
             }
         };
 
@@ -254,9 +258,14 @@
                     element.textContent = translations[lang][key];
                 }
             });
+             // Update button text in menu cards
+            const menuButtons = document.querySelectorAll('.menu-card .cta-button');
+            menuButtons.forEach(button => {
+                button.textContent = translations[lang].orderNow;
+            });
         }
 
-        // --- Dynamic Menu Logic (Loaded from Admin Panel) ---
+        // --- Dynamic Menu Logic ---
         const defaultMenu = [
             { name: "Batata Bhaji", price: 40, image: "images/batata-bhaji.jpg", desc: "Crispy potato fritters, perfect with tea.", veg: true },
             { name: "Bhaji", price: 40, image: "images/bhaji.jpg", desc: "Assorted vegetable fritters.", veg: true },
@@ -271,42 +280,96 @@
 
         menuData.forEach(item => {
             const vegIcon = item.veg ? '<span class="veg-icon" style="color:green">●</span>' : '<span class="veg-icon" style="color:red">●</span>';
+            const lang = document.getElementById('language-selector').value || 'mr';
             const cardHtml = `
                 <div class="menu-card">
                     <img src="${item.image}" alt="${item.name}" onerror="this.src='https://placehold.co/600x400?text=No+Image'">
                     <h4>${vegIcon} <span>${item.name}</span></h4>
                     <span class="price">₹${item.price}</span>
                     <p class="description">${item.desc}</p>
-                    <button class="cta-button" style="width:100%; text-align:center; margin-top:10px;" onclick="orderItem('${item.name}', ${item.price})">${translations['mr'].orderNow}</button>
+                    <button class="cta-button" style="width:100%; text-align:center; margin-top:10px;" onclick="orderItem('${item.name}', ${item.price})">${translations[lang].orderNow}</button>
                 </div>
             `;
             menuContainer.innerHTML += cardHtml;
         });
 
+        // --- New Modal Logic ---
+        const modal = document.getElementById('order-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalInput = document.getElementById('modal-input');
+        const modalConfirm = document.getElementById('modal-confirm');
+        const modalCancel = document.getElementById('modal-cancel');
+
+        let currentItem = {};
+        let currentStep = ''; // 'quantity' or 'address'
+
         function orderItem(itemName, price) {
             const lang = document.getElementById('language-selector').value || 'en';
-            proceedWithOrder(itemName, price, lang);
+            currentItem = { name: itemName, price: price, lang: lang };
+            currentStep = 'quantity';
+            
+            modalTitle.textContent = translations[lang].order_prompt.replace('{itemName}', itemName);
+            modalInput.type = 'number';
+            modalInput.value = '1';
+            modalConfirm.textContent = translations[lang].confirm_button;
+            modalCancel.textContent = translations[lang].cancel_button;
+
+            modal.classList.add('visible');
         }
 
-        function proceedWithOrder(itemName, price, lang) {
-            const promptText = translations[lang].order_prompt.replace('{itemName}', itemName); // itemName is now direct string
-            const quantity = prompt(promptText, "1");
-
-            if (quantity && !isNaN(quantity) && quantity > 0) {
-                const qty = parseInt(quantity);
-                const deliveryCharge = 30; // ₹30 डिलीवरी चार्ज
-                const itemTotal = qty * price;
-                const grandTotal = itemTotal + deliveryCharge;
-                const orderMessage = `${translations[lang].i_want_to_order}\n- ${qty} x ${itemName} (₹${itemTotal})\n- ${translations[lang].deliveryCharge}: ₹${deliveryCharge}\n- ${translations[lang].total}: ₹${grandTotal}`;
-                const restaurantReply = translations[lang].restaurant_reply;
-                const finalMessage = `${orderMessage}\n\n${restaurantReply}`;
-                const whatsappNumber = "919270151355";
-                const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(finalMessage)}`;
-                window.open(url, '_blank');
-            } else if (quantity !== null) {
-                alert(translations[lang].invalid_quantity);
+        modalConfirm.addEventListener('click', () => {
+            if (currentStep === 'quantity') {
+                const quantity = parseInt(modalInput.value);
+                if (quantity && !isNaN(quantity) && quantity > 0) {
+                    currentItem.quantity = quantity;
+                    // Now ask for address
+                    currentStep = 'address';
+                    modalTitle.textContent = translations[currentItem.lang].address_prompt_title;
+                    modalInput.type = 'text';
+                    modalInput.value = '';
+                    modalInput.placeholder = translations[currentItem.lang].location_prompt;
+                } else {
+                    alert(translations[currentItem.lang].invalid_quantity);
+                }
+            } else if (currentStep === 'address') {
+                const address = modalInput.value.trim();
+                if (address) {
+                    currentItem.address = address;
+                    sendOrder();
+                    closeModal();
+                } else {
+                    // Maybe show an error that address is required
+                }
             }
+        });
+        
+        modalCancel.addEventListener('click', () => {
+            closeModal();
+        });
+
+        function closeModal() {
+            modal.classList.remove('visible');
+            currentItem = {};
+            currentStep = '';
         }
+
+        function sendOrder() {
+            const { name, price, quantity, address, lang } = currentItem;
+            
+            const deliveryCharge = 30; // ₹30 डिलीवरी चार्ज
+            const itemTotal = quantity * price;
+            const grandTotal = itemTotal + deliveryCharge;
+            
+            const orderMessage = `${translations[lang].i_want_to_order}\n\n*Order Details:*\n- ${quantity} x ${name} (₹${itemTotal})\n- ${translations[lang].deliveryCharge}: ₹${deliveryCharge}\n- *${translations[lang].total}: ₹${grandTotal}*\n\n*Delivery Address:*\n${address}`;
+            
+            const restaurantReply = translations[lang].restaurant_reply;
+            const finalMessage = `${orderMessage}\n\n---\n_${restaurantReply}_`;
+            
+            const whatsappNumber = "919270151355";
+            const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(finalMessage)}`;
+            window.open(url, '_blank');
+        }
+
 
         // Floating WhatsApp button for general inquiry
         document.getElementById('whatsapp-float-btn').addEventListener('click', function() {
